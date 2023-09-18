@@ -3,9 +3,10 @@ CREATE USER myuser;
 CREATE DATABASE mydb;
 
 GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;
+
 CREATE TABLE empleado
 (
-	clave integer NOT NULL,
+	clave integer,
 	nombre character varying,
 	direccion character varying,
 	telefono character varying,
