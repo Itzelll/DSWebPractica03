@@ -1,4 +1,16 @@
-
+<?php
+    session_start();
+?>
+<?php
+    echo 'Bienvenido, ';
+    if (isset($_SESSION['k_username'])) {
+        echo '<b>'.$_SESSION['k_username'].'</b>.';
+        echo '<p><a href="logout.php">Logout</a></p>';
+}else{
+ echo '<p><a href="login.php">Login</a></p>';
+ 
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +117,6 @@
         echo "Eliminando registro con ID " . $_POST['deleteId'];
         try {
             $pdo = conectarBaseDatos();
-
             $deleteId = $_POST['deleteId'];
 
             $sql = "DELETE FROM empleado WHERE clave = ?";
@@ -196,7 +207,7 @@
                 echo "<td>";
                 echo "<form action=\"".$_SERVER['PHP_SELF']."\" method=\"POST\">";
                 echo "<input type=\"hidden\" name=\"deleteId\" value=\"" . $row['clave'] . "\">";
-                echo "<input type=\"button\" value=\"Eliminar\" onclick=\"confirmarEliminacion(" . $row['clave'] . ")\">";
+                echo "<input type=\"button\" value=\"Eliminar\" onclick=\"confirmarEliminacion('" . $row['clave'] . "')\">";
                 echo "</form>";
                 echo "</td>";
                 echo "</tr>";
@@ -223,6 +234,7 @@
         }
         
         function mostrarDatos(clave) {
+            
             // Obtener los datos del empleado y mostrarlos en los campos del formulario
             var idInput = document.getElementById("clave");
             var nombreInput = document.getElementById("Nombre");
