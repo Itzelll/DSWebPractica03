@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +13,7 @@
 
     function conectarBaseDatos(){
         //conection to postgresql
-        $ip = "pgsql:host=172.17.0.2;port=5432;dbname=mydb;";
+        $ip = "pgsql:host=172.17.0.3;port=5432;dbname=mydb;";
         $username = "postgres";
         $password = "postgres";
         try {
@@ -172,7 +170,8 @@
     </form>
     
     <h2>Datos Guardados</h2>
-    <table border="1">
+    <table border="1"
+    session_start();>
         <tr>
             <th>Clave</th>
             <th>Nombre</th>
